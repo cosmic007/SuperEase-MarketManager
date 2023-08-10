@@ -11,7 +11,6 @@ public void updatePurchaseCount(Long product_id , Long quantity);
 	
 	public List<LeastSellingProduct> displayLeastSellingByCateory (String categoryCode,int limit);
 	
-	public List<LeastSellingProduct> displayLeastSellingByRate(String value,int limit);
 	
 	
 

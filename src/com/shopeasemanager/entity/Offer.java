@@ -9,6 +9,14 @@ public class Offer {
 		this.offerID = offerID;
 		this.description = description;
 	}
+	
+	
+	public Offer(Long offerID) {
+		super();
+		this.offerID = offerID;
+	}
+
+
 	public Long getOfferID() {
 		return offerID;
 	}

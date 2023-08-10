@@ -44,6 +44,23 @@ public class ProductDAOImpl implements ProductDAO {
 				preparedStatement.setLong(1, product.getProductID());
 				preparedStatement.setString(2, productCategoryCode);
 				preparedStatement.executeUpdate();
+				String sql2 = "insert into  purchase_stats(product_id,purchase_count) values(?,?)";
+				preparedStatement = connection.prepareStatement(sql2);
+				preparedStatement.setLong(1, product.getProductID());
+				preparedStatement.setLong(2, 0);
+				preparedStatement.executeUpdate();
+				String sql3 = "insert into discount(product_id,discount_amount) values(?,?)";
+				preparedStatement = connection.prepareStatement(sql3);
+				preparedStatement.setLong(1, product.getProductID());
+				preparedStatement.setDouble(2, 0);
+				preparedStatement.executeUpdate();
+				String sql4 = "insert into stock(product_id,available_stock) values(?,?)";
+				preparedStatement = connection.prepareStatement(sql4);
+				preparedStatement.setLong(1, product.getProductID());
+				preparedStatement.setLong(2, 0);
+				preparedStatement.executeUpdate();
+				
+				
 			}
 
 			

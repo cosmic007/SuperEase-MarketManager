@@ -25,13 +25,8 @@ public class PurchaseStatsServiceImpl implements PurchaseStatsService {
 	@Override
 	public List<LeastSellingProduct> displayLeastSellingByCateory(String categoryCode, int limit) {
 		
-		return purchaseStatsDAOImpl.displayLeastSellingByCateory(categoryCode, limit);;
+		return purchaseStatsDAOImpl.displayLeastSellingByCateory(categoryCode, limit);
 	}
 
-	@Override
-	public List<LeastSellingProduct> displayLeastSellingByRate(String value, int limit) {
-	
-		return purchaseStatsDAOImpl.displayLeastSellingByRate(value, limit);
-	}
 
 }

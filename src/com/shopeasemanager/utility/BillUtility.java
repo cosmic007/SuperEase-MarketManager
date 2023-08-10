@@ -207,10 +207,15 @@ public class BillUtility {
 				ProductUtility.displayProduct(productServiceImpl.displayAllProducts());
 				System.out.println("Enter productID:");
 				Long productID = scanner.nextLong();
+				
+				
+				
 				if (productServiceImpl.getProduct(productID) != null) {
 					Product product = productServiceImpl.getProduct(productID);
 					System.out.println("Enter quantity:");
 					Long quantity = scanner.nextLong();
+					
+					
 					if (quantity < stockServiceImpl.getStockByID(productID)) {
 						
 						
