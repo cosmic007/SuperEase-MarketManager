@@ -1,5 +1,7 @@
 package com.shopeasemanager.utility;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 
@@ -119,7 +121,19 @@ public class OfferUtility {
 					Offer newOffer = new Offer(offerId,offerServiceImpl.getOffer(offerId));
 					
 					
-					ProductOffer productOffer = new ProductOffer(product,newOffer);
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+					System.out.println("Enter new StartDate:");
+					scanner.nextLine();
+					String startD=scanner.nextLine();
+					LocalDate startDate = LocalDate.parse(startD, formatter);
+					System.out.println("Enter new EndDate:");
+					String endD=scanner.nextLine();
+					LocalDate endDate=LocalDate.parse(endD, formatter);
+					
+					
+					
+					
+					ProductOffer productOffer = new ProductOffer(product,newOffer,startDate,endDate);
 					
 		
 					boolean value=productOfferServiceImpl.addProductOffer(productOffer);
@@ -136,19 +150,6 @@ public class OfferUtility {
 				
 				break;
 			case 6:
-				if(productOfferServiceImpl.displayProductOffer()!=null)
-				{
-				
-				for(ProductOffer productOffer:productOfferServiceImpl.displayProductOffer())
-				{
-					System.out.println(productOffer.getProduct().getProductID()+"    "+productOffer.getProduct().getProductName()+"    "+productOffer.getOffer().getDescription());
-				}
-				}
-				else
-				{
-					System.out.println("List Not found");
-				}
-				
 				System.out.println("Enter product ID:");
 				Long productid = scanner.nextLong();
 				if(productServiceImpl.getProduct(productid)!=null)
@@ -158,14 +159,23 @@ public class OfferUtility {
 						System.out.println(productOffer.getOfferID() + "   " + productOffer.getDescription());
 
 					}
-					System.out.println("Enter 100 for removing the current offer");
 					
 					Long offerId=scanner.nextLong();
 					
 					Offer newOffer = new Offer(offerId,offerServiceImpl.getOffer(offerId));
+					DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+					System.out.println("Enter new StartDate:");
+					scanner.nextLine();
+					String startD=scanner.nextLine();
+					LocalDate startDate = LocalDate.parse(startD, formatter);
+					System.out.println("Enter new EndDate:");
+					String endD=scanner.nextLine();
+					LocalDate endDate=LocalDate.parse(endD, formatter);
 					
 					
-					ProductOffer productOffer = new ProductOffer(product,newOffer);
+					
+					
+					ProductOffer productOffer = new ProductOffer(product,newOffer,startDate,endDate);
 					
 		
 					boolean value=productOfferServiceImpl.updateProductOffer(productOffer);
@@ -191,7 +201,7 @@ public class OfferUtility {
 				
 				for(ProductOffer productOffer:productOfferServiceImpl.displayProductOffer())
 				{
-					System.out.println(productOffer.getProduct().getProductID()+"    "+productOffer.getProduct().getProductName()+"    "+productOffer.getOffer().getDescription());
+					System.out.println(productOffer.getProduct().getProductID()+"    "+productOffer.getProduct().getProductName()+"    "+productOffer.getOffer().getDescription()+"     "+productOffer.getStatus());
 				}
 				}
 				else
